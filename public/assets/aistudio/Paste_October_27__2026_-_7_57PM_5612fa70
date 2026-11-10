@@ -1,0 +1,684 @@
+# SIGMA AI — PASTPAPERS.CO INTEGRATION, REAL PDF SOLVING, FULLY SCROLLABLE SIDEBAR, ANIMATIONS, AND RELIABLE AI API
+
+You are working on my EXISTING Sigma AI project. Implement the following requirements directly in the current codebase. Do not create a replacement website, rebuild the project, or remove existing working features.
+
+Use my attached screenshots as visual and structural references for the PastPapers.Co folder hierarchy and the Sigma AI sidebar.
+
+This is a real implementation task. Inspect the existing code, repair the current features, connect real APIs and data sources, implement the interfaces, and test the result.
+
+## 1. CRITICAL PROJECT-PRESERVATION RULES
+
+Before modifying anything:
+
+- Inspect the complete existing project, routes, components, API calls, backend, database, Firebase configuration, AI service, sidebar, Study Sources workspace, PDF viewer, storage, and existing animations.
+- Identify the cause of the current generic AI service error.
+- Identify why only a small number of past papers currently appear.
+- Reuse existing components, API integrations, state management, theme settings, and authentication.
+- Preserve existing user accounts, chat history, images, files, Library items, Schedule, Explore, Temporary Chat, and all other working features.
+- Do not overwrite the existing Firebase project or silently migrate user data.
+- Do not create duplicate versions of the same page or feature.
+- Do not display fake papers, fake PDFs, fake connections, or invented API responses.
+- Do not hardcode catalogue totals to make the interface look complete.
+- Do not mark a feature as finished until it has been implemented and tested.
+- Do not stop after producing a plan or a mockup.
+
+If an external API requires credentials, configure the integration workflow and clearly identify the missing credential or permission. Never pretend that an unconfigured integration is working.
+
+## 2. NEW STUDY SOURCES TAB: PASTPAPERS.CO
+
+Inside the existing Study Sources workspace, add a new tab named exactly:
+
+**PastPapers.Co**
+
+The Study Sources tabs must include:
+
+- Overview
+- Past Papers
+- Exam Boards
+- Educational Hubs
+- Websites
+- YouTube Sources
+- Saved Study Materials
+- PastPapers.Co
+
+Preserve any existing sections that already work.
+
+The PastPapers.Co tab must reproduce the source's useful browsing hierarchy inside Sigma AI. Do not simply redirect users to the PastPapers.Co homepage.
+
+Use this source as the starting point:
+
+https://www.pastpapers.co/
+
+Also inspect these category pages:
+
+- https://www.pastpapers.co/caie
+- https://www.pastpapers.co/aqa
+
+Discover the actual CCEA and OCR category URLs from the website itself. Do not guess URLs.
+
+The integration must retrieve real source data and preserve the available folder hierarchy.
+
+## 3. PASTPAPERS.CO — EXACT CATEGORY STRUCTURE
+
+Build the interface as a navigable folder tree and breadcrumb hierarchy.
+
+### Level 1: Exam board selection
+
+Display the four primary exam-board sections:
+
+1. CAIE — Cambridge Assessment International Education
+2. AQA — Assessment and Qualifications Alliance
+3. CCEA — Council for the Curriculum, Examinations and Assessment
+4. OCR — Oxford Cambridge and RSA
+
+Use the complete board names. Do not truncate them with three dots when the layout can wrap the text.
+
+Use the existing Sigma AI dark theme, spacing, borders, and theme colors. Match the screenshot's clean folder-browser appearance while adapting it to the existing app.
+
+### Level 2: Qualification folders
+
+Retrieve the actual qualification folders from each board.
+
+**CAIE:**
+- A Level
+- IGCSE
+- O Level
+
+The interface must show the number of actual discovered folders and resources where available.
+
+**AQA:**
+Discover and display the actual available qualification categories, including the following where present:
+
+- A Level
+- Applied General
+- AQA Certificate
+- ELC
+- FCSE
+- Functional Skills
+- GCSE
+- Project qualifications
+
+Do not assume that the list is permanently limited to eight. Refresh it from the real source when possible.
+
+**CCEA:**
+Discover the actual qualification categories, including GCE and GCSE where present.
+
+**OCR:**
+Discover the actual qualification categories, including A Level and GCSE where present.
+
+Do not fabricate missing categories or paper counts. Show the actual number of items returned by the source.
+
+### Level 3: Subject folders
+
+Within each qualification, retrieve the real subject list.
+
+Examples include Biology, Chemistry, Physics, Mathematics, English, Business Studies, Computer Science, Accounting, Pakistan Studies, and all other subjects actually available.
+
+Every subject must use its real name and syllabus or specification code when available.
+
+Allow searching by:
+
+- Subject name
+- Subject code
+- Qualification
+- Exam board
+- Year
+- Exam session
+- Paper number
+- Resource type
+
+Do not hardcode a handful of sample subjects.
+
+### Level 4: Years and exam sessions
+
+Within each subject, display the actual available year and session folders.
+
+Support the session labels used by the source, such as:
+
+- May/June
+- October/November
+- March, where available
+- Other actual sessions returned by the source
+
+Do not invent missing years or assume that every subject has every session.
+
+### Level 5: Actual resource files
+
+Within each session, display the actual resources available.
+
+Include the following resource types when present:
+
+- Question Papers
+- Mark Schemes
+- Examiner Reports
+- Grade Thresholds
+- Inserts
+- Syllabuses
+- Specimen Papers
+- Supporting Files
+- Other source-provided resources
+
+Display each resource's actual filename, type, file size where available, and availability status.
+
+For example, a CAIE Computer Science resource may contain individual question papers, mark schemes, grade thresholds, inserts, and supporting files. Retrieve the actual file inventory rather than generating filenames from a naming convention.
+
+The resource list must match the data actually returned by the source.
+
+## 4. COMPLETE CATALOGUE DISCOVERY — TARGET 83,000 RESOURCES
+
+My requested target is to include all available PastPapers.Co resources, with a target of approximately **83,000 resources** if that total is confirmed by actual discovery.
+
+Do not merely insert 83,000 as a number in the UI.
+
+Do not stop at the first seven papers, the first page of results, a handful of subjects, or the first few folders.
+
+Implement a scalable discovery and indexing pipeline that:
+
+1. Discovers the four board sections.
+2. Discovers all available qualification folders.
+3. Discovers all available subject folders.
+4. Discovers years and exam sessions.
+5. Retrieves individual resource records.
+6. Extracts actual PDF or file URLs where available.
+7. Captures metadata such as title, file type, size, board, qualification, subject, session, and source page.
+8. Follows supported pagination and folder links.
+9. Handles retries, rate limits, temporary failures, and duplicate records.
+10. Stores indexing progress persistently so the process can resume after interruption.
+11. Rechecks resources periodically for changed or broken links.
+12. Reports actual discovered, indexed, accessible, restricted, failed, and duplicate resource counts.
+
+Use server-side ingestion and pagination rather than loading the entire catalogue into browser memory.
+
+Where an official or authorized API exists, prefer it. Otherwise, use permitted public access and follow the source's terms, robots.txt, copyright restrictions, rate limits, and access requirements.
+
+Do not bypass authentication or other restrictions.
+
+If the source blocks crawling or does not provide unrestricted access, clearly identify the limitation and implement the permitted alternative.
+
+### Count rules
+
+Display separate counters for:
+
+- Total discovered resources
+- Successfully indexed resources
+- Resources with verified accessible PDFs
+- Restricted resources
+- Temporarily unavailable resources
+- Failed verification
+- Last successful indexing time
+
+The total must be calculated from actual records.
+
+Do not display 83,000 as a confirmed count until the indexed dataset supports that number. If only part of the catalogue is indexed, display the real indexed count and a truthful progress indicator.
+
+Do not create placeholder rows to reach a target.
+
+## 5. IMPORTANT: OPEN PDF INSIDE SIGMA AI
+
+This is a core requirement.
+
+When the user clicks **Open PDF**, do not merely open the PastPapers.Co homepage or a subject landing page.
+
+Open the selected paper's actual PDF inside Sigma AI's own interface.
+
+Implement a native Sigma AI document viewer that supports:
+
+- PDF rendering
+- Page navigation
+- Zoom in and out
+- Fit-to-width
+- Fit-to-page
+- Fullscreen
+- Page count
+- Download, when permitted
+- Text extraction, where available
+- Search within the PDF, where supported
+- Loading and error states
+- Return to the previous folder
+- Open AI Study Assistant for this paper
+
+Use a suitable PDF-rendering library already present in the project or add a compatible, maintained dependency if necessary.
+
+### PDF URL resolution
+
+For each resource:
+
+1. Retrieve its actual resource record.
+2. Resolve the actual PDF URL using the source's available links or supported endpoints.
+3. Verify that the destination points to the intended document.
+4. Open the PDF in the Sigma AI viewer when technically and legally permitted.
+5. If direct embedding is blocked, use an authorized retrieval or download flow where permitted.
+6. If only a source page is accessible, show that page as a fallback and clearly explain why direct PDF viewing is unavailable.
+
+Do not fabricate a direct PDF URL. Do not show a different paper when a PDF fails to load.
+
+Do not falsely label an HTML page as a PDF.
+
+### Download behavior
+
+The Download PDF action must download the selected document when access is permitted.
+
+Respect source permissions and copyright. Do not automatically copy or redistribute the entire third-party archive to Sigma AI's servers without authorization.
+
+If the user downloads a file, preserve the correct filename and file content.
+
+## 6. SOLVE THE SELECTED PAST PAPER — NOT A GENERIC ERROR
+
+The user must be able to ask Sigma AI to solve a particular selected paper.
+
+Provide a contextual **Study This Paper** or **Solve This Paper** action in the PDF viewer.
+
+When selected, pass the actual document content or a valid document reference to the AI backend.
+
+The AI must not receive only the PDF filename and pretend it has read the questions.
+
+### Required document-solving workflow
+
+1. Resolve the selected resource.
+2. Retrieve or open the actual PDF using an authorized method.
+3. Extract text from the PDF.
+4. If the PDF contains scanned pages, use OCR or supported visual document understanding.
+5. Detect page boundaries, question numbers, subquestions, marks, diagrams, tables, and instructions.
+6. Check whether extraction is complete enough to answer reliably.
+7. Solve the selected question or paper using the actual question content.
+8. Preserve the original question numbering.
+9. Explain the method step by step.
+10. Provide a final answer.
+11. Where a mark scheme is available and accessible, compare the answer with its marking requirements.
+12. Identify uncertainties if a diagram, formula, scan, or page could not be read.
+
+### Study modes
+
+Offer the user these actions:
+
+- Solve a specific question
+- Solve a selected question range
+- Solve the complete paper
+- Explain a question without immediately revealing the answer, if requested
+- Give step-by-step solutions
+- Compare answers with the mark scheme
+- Explain how marks are awarded
+- Review the user's attempted answers
+- Summarize difficult topics from the paper
+
+For complete-paper solving, process the document in manageable sections. Maintain question numbering and context between sections.
+
+Do not silently skip pages, questions, diagrams, or subparts.
+
+If the user asks for a specific question, solve that question rather than forcing the user through an entire paper.
+
+If the user asks to solve the whole paper, explain the paper section by section and track which sections are complete.
+
+### Answer quality
+
+For each question, where applicable, provide:
+
+- Question number
+- Marks available
+- Required knowledge
+- Step-by-step reasoning
+- Relevant formula or method
+- Final answer
+- Mark-scheme alignment
+- Common mistakes
+- A short explanation of why the answer is correct
+
+For Mathematics and Sciences, show calculations and units where relevant.
+
+For essay subjects, follow the command word, assessment objectives, and mark allocation.
+
+Never invent an official mark scheme or claim that an answer matches it unless the actual scheme was retrieved.
+
+## 7. REMOVE THE WRONG “USER SAFETY / USER SAVE” BEHAVIOR
+
+Inspect the existing paper-solving and chat workflows for any incorrect UI text or logic involving phrases such as “User safety is equal to save,” “User save,” or similar unrelated labels.
+
+Do not display such text as a substitute for solving a selected paper.
+
+If the user selects a paper and asks to solve it, use the selected paper's actual content and the requested study workflow.
+
+Do not misinterpret a request to solve an exam paper as a request to save a file or display a safety-related message.
+
+Keep legitimate privacy and safety protections intact; the requirement is to correct the irrelevant message and route the request to the correct document-solving pipeline.
+
+## 8. FIX GENERIC AI API FAILURE MESSAGES
+
+The current application sometimes responds:
+
+“The AI service could not complete your request. Please try sending your message again in a few minutes.”
+
+Investigate and repair the actual cause.
+
+Do not simply hide the error and pretend the answer was generated.
+
+### Inspect the full request lifecycle
+
+Check:
+
+- Frontend request payload
+- Correct API endpoint
+- Backend request handling
+- Authentication and user permissions
+- Model/provider selection
+- API key availability on the server
+- Request schema and content format
+- Maximum input size
+- PDF extraction and OCR
+- Context-window limits
+- Timeouts
+- Rate limits
+- Provider quota
+- Response parsing
+- Streaming and cancellation
+- Retry logic
+- Error logging
+- Deployment configuration
+
+Use the actual configured AI provider and its supported API. Do not invent an API endpoint or assume a provider is configured simply because its name appears in settings.
+
+Keep secrets server-side.
+
+### Reliable AI request handling
+
+Implement:
+
+- Input validation
+- Request IDs for diagnostics
+- Reasonable timeouts
+- Limited retries for transient failures
+- Exponential backoff where appropriate
+- Safe handling of rate limits
+- Appropriate chunking for large documents
+- Streaming when supported
+- Cancellation support
+- Clear user-facing error states
+- Retry controls
+- Backend diagnostic logging without exposing secrets
+
+Do not repeatedly retry permanent errors such as invalid credentials.
+
+Do not submit duplicate messages on retry.
+
+Do not display the same generic error for every failure.
+
+### Large document handling
+
+For a long PDF:
+
+1. Extract text in manageable page ranges.
+2. Store temporary processing state securely.
+3. Send relevant sections to the AI using the provider's supported context limits.
+4. Preserve question numbers and references.
+5. Continue processing when the user requests a complete paper.
+6. Keep track of completed and remaining sections.
+7. Recover from temporary failures without restarting the entire paper unnecessarily.
+
+If a provider cannot process the full paper in one request, split the work intelligently rather than failing the entire task.
+
+### Honest fallback behavior
+
+If the AI provider is temporarily unavailable, show a useful message explaining that the request could not be completed and offer a Retry action.
+
+If a PDF could not be read, explain the document-reading problem.
+
+If an API quota is exhausted, identify the quota or configuration issue.
+
+If credentials are missing, identify the configuration requirement without revealing secret values.
+
+Never fabricate an answer, silently discard the user's question, or falsely report success.
+
+## 9. API AND AI ENGINE CONFIGURATION
+
+Inside Command & Control Center → AI Engines, show the actual configured provider and model.
+
+Implement a clear provider configuration and health-check workflow using the existing architecture.
+
+Display:
+
+- Provider name
+- Configured model
+- Connection state
+- Credential configuration state
+- Last successful request
+- Last health-check result
+- Current error category, when available
+- Retry or configuration action
+
+A health check must perform a real supported test, not simply inspect whether an API key string exists.
+
+If multiple providers are already configured, preserve their selection logic and fallback behavior.
+
+Do not add arbitrary new providers or automatically change the user's model without a supported configuration.
+
+If a provider fallback is available, use it only when it is actually configured and permitted. Make any relevant fallback status transparent.
+
+Do not guarantee zero API failures. Build robust handling so temporary failures do not destroy the conversation or produce misleading messages.
+
+## 10. FULLY SCROLLABLE SIDEBAR — ENTIRE NAVIGATION
+
+Use my attached Sigma AI sidebar screenshot as the layout reference.
+
+The entire sidebar must scroll as one continuous navigation area.
+
+The current problem is that only a lower section or the Recent Chats section scrolls independently, while the upper navigation buttons remain fixed.
+
+That behavior must be corrected.
+
+### Required behavior
+
+The complete sidebar scrollable area must include:
+
+- Sigma AI header and profile/branding area, if intended to scroll with the navigation
+- New Chat
+- Temporary Chat
+- Explore
+- Images
+- Schedule
+- Library
+- Study Sources and its ON/OFF switch
+- Command & Control
+- Search conversations
+- Recent Chats and the conversation list
+
+When the user scrolls downward, the top navigation buttons must move upward and become scrollable out of view. Recent Chats must become visible farther down in the same scrolling area.
+
+When the user scrolls upward, the navigation returns naturally.
+
+Do not create a separately scrolling Recent Chats panel inside an otherwise fixed sidebar.
+
+Do not leave New Chat or the other top buttons permanently fixed if that prevents the complete sidebar from scrolling.
+
+### Implementation guidance
+
+Inspect the current DOM and CSS before modifying layout.
+
+Use a single sidebar scroll container with:
+
+- A viewport-constrained height
+- `min-height: 0` where needed in flex layouts
+- Vertical overflow enabled on the complete sidebar content
+- Correct flex sizing
+- No nested competing vertical scroll containers for navigation and Recent Chats
+- Stable scrollbar behavior
+- No accidental horizontal overflow
+
+If the main chat content needs its own independent scrolling area, keep that independent from the sidebar.
+
+Do not change the entire page's scrolling behavior to compensate for the sidebar.
+
+Ensure mouse wheel, touch scrolling, trackpads, and keyboard navigation work.
+
+On mobile, preserve the existing responsive navigation behavior.
+
+The Recent Chats section should continue to display all actual saved conversations, with its own pagination or virtualization if necessary. It must not be limited to a tiny fixed-height area that cannot be accessed by scrolling the complete sidebar.
+
+## 11. SIDEBAR DESIGN PRESERVATION
+
+Preserve the current visual identity shown in my screenshot:
+
+- Dark navy/charcoal background
+- Rounded navigation cards
+- Existing blue New Chat button
+- Existing category icons and accent colors
+- Current active-state styling
+- Study Sources ON/OFF switch
+- Command & Control entry
+- Search conversations field
+- Recent Chats and Library styling
+
+Do not replace the existing sidebar with a generic template.
+
+Keep full labels readable. Use wrapping or a wider layout where needed rather than truncating important names.
+
+Maintain accessible focus states and clear ON/OFF labels.
+
+## 12. ANIMATIONS — SHORT, SMOOTH, AND CONSISTENT
+
+Apply the existing Sigma AI animations without redesigning the application.
+
+Inspect the current animation components and reuse their established design tokens, timing, and easing.
+
+Implement or restore:
+
+- Homepage blur-to-sharp title reveal
+- Smooth New Chat and primary-button entrance
+- Existing animated multicolor typing/text effect
+- Subtle gradient movement where already used
+- Smooth sidebar scrolling and navigation transitions
+- Gentle button hover and press feedback
+- Smooth folder opening and closing
+- Smooth tab transitions in Study Sources
+- Subtle card entrance animations
+- Animated but lightweight loading skeletons
+- Smooth PDF page and viewer transitions
+- Real audio-responsive microphone waveform
+- Gentle Live Assistant orb pulse while speaking, if already supported
+- Smooth storage meter updates
+
+Animation rules:
+
+- Do not introduce excessive glow or distracting movement.
+- Use existing accent colors and saved theme settings.
+- Respect reduced-motion preferences.
+- Do not animate fake progress.
+- Avoid layout shifts.
+- Do not let animation block scrolling, clicking, or keyboard navigation.
+- Preserve performance on mobile and low-powered devices.
+
+## 13. PDF VIEWER AND AI CHAT INTEGRATION
+
+When a PDF is open, provide an optional contextual study panel integrated with the existing chat experience.
+
+The user should be able to ask questions such as:
+
+- “Solve Question 1.”
+- “Explain part (b) in simple words.”
+- “Solve Questions 1–5.”
+- “Explain why this answer earns four marks.”
+- “Compare my answer with the mark scheme.”
+- “Teach me the topic tested in this question.”
+- “Solve the complete paper step by step.”
+
+The AI must know which paper is selected and which page or question the user refers to.
+
+Pass the relevant extracted document content as context. Do not rely only on a paper title.
+
+Allow the user to return to the PDF without losing the conversation context.
+
+Keep normal chat, Temporary Chat, and existing saved-history behavior intact.
+
+## 14. PERMISSIONS, COPYRIGHT, AND RESOURCE INTEGRITY
+
+Use source material responsibly.
+
+- Preserve actual source URLs.
+- Do not bypass logins or restricted access.
+- Do not scrape against access restrictions.
+- Do not download and rehost every third-party file without permission.
+- Do not expose server-side credentials.
+- Use direct PDF links only when the actual resource and its access method are verified.
+- Do not invent official affiliations.
+- Do not fabricate a paper or mark scheme when one is unavailable.
+
+Prefer a source-backed catalogue that opens permitted documents directly over an unauthorized duplicate of the entire third-party archive.
+
+## 15. REQUIRED TESTS
+
+After implementing, run available project checks and test these workflows.
+
+### PastPapers.Co
+- All four board sections display correctly.
+- Qualification folders match actual source data.
+- Subject lists are populated from real data.
+- Year and exam-session folders work.
+- Individual resource files display correctly.
+- Pagination and search work.
+- The catalogue is not limited to seven hardcoded items.
+- Resource totals are real.
+- The 83,000 target is not presented as verified unless the actual catalogue confirms it.
+
+### PDF viewer
+- Opening a paper loads the selected document, not the homepage.
+- The PDF renders inside Sigma AI when supported.
+- Page navigation and zoom work.
+- Download returns the correct file when permitted.
+- Unavailable PDFs display a useful fallback.
+- No unrelated PDF is shown when a link fails.
+
+### AI solving
+- The selected document's actual content reaches the AI pipeline.
+- Specific questions can be solved individually.
+- Complete papers can be processed in sections.
+- Scanned PDFs use supported OCR or visual analysis where available.
+- Mark schemes are used only when actually retrieved.
+- The AI does not claim to have read inaccessible pages.
+
+### AI API reliability
+- Valid requests work.
+- Transient failures are handled appropriately.
+- Invalid credentials produce a useful configuration error.
+- Large documents are chunked correctly.
+- Retries do not duplicate user messages.
+- Errors do not destroy existing chat history.
+- No false success messages appear.
+
+### Sidebar
+- The entire sidebar scrolls from top to bottom.
+- New Chat and all upper navigation items scroll away naturally.
+- Recent Chats appears farther down in the same sidebar scroll container.
+- No nested scrollbar prevents access to navigation.
+- The main chat area continues to scroll independently.
+- Desktop and mobile layouts work.
+
+### Existing features
+- Authentication remains functional.
+- Study Sources ON/OFF still works.
+- Temporary Chat remains temporary.
+- Library, Images, Schedule, Explore, and Command & Control remain functional.
+- Existing animations and themes remain intact.
+- Existing data is preserved.
+
+## 16. FINAL REPORT
+
+At completion, provide a factual implementation report containing:
+
+1. Files changed.
+2. New components and backend services.
+3. Actual PastPapers.Co resources discovered.
+4. Number of accessible PDF files verified.
+5. Whether the 83,000-resource target has been verified or remains incomplete.
+6. How PDFs open inside Sigma AI.
+7. How selected papers are processed and solved.
+8. What caused the previous generic AI API error.
+9. What was changed to improve API reliability.
+10. How the entire sidebar scroll behavior was fixed.
+11. Tests actually executed and their results.
+12. Credentials, permissions, or external setup steps still required.
+
+Do not say everything is complete if any requirement remains blocked.
+
+Do not claim that 83,000 papers are loaded unless 83,000 actual resource records have been discovered and validated.
+
+Do not claim that the AI has read a paper unless its content was successfully retrieved and processed.
+
+FINAL DIRECTIVE: Implement this in my existing Sigma AI project, preserving the current application and user data. Prioritize the real catalogue, correct PDF rendering, reliable document-based question solving, the complete sidebar scroll behavior, smooth existing animations, and accurate API diagnostics. Do not substitute hardcoded data, fake buttons, or a homepage redirect for the requested functionality.

@@ -1,0 +1,101 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global catch-all default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper function to check if caller is an admin
+    function isAdmin() {
+      return request.auth != null && (
+        request.auth.token.email == 'sabaharis.239@gmail.com' ||
+        request.auth.token.email == 'sabahharis.239@gmail.com' ||
+        request.auth.token.email == 'sigmaaaboiiiiiiiiiiiiiiiiiii@gmail.com' ||
+        request.auth.token.email == 'devuserhub@gmail.com' ||
+        request.auth.token.email == 'wahaj1haider3@gmail.com' ||
+        request.auth.token.email == 'tehmaarhaider12@gmail.com'
+      );
+    }
+
+    // Users collection: accessible by owner or admin
+    match /users/{userId} {
+      allow read: if request.auth != null && (request.auth.uid == userId || isAdmin());
+      allow write: if request.auth != null && (request.auth.uid == userId || isAdmin());
+      
+      // Voice Sessions subcollection for authenticated users
+      match /voiceSessions/{sessionId} {
+        allow read: if request.auth != null && (request.auth.uid == userId || isAdmin());
+        allow write: if request.auth != null && (request.auth.uid == userId || isAdmin());
+      }
+
+      match /{sub=**} {
+        allow read, write: if request.auth != null && (request.auth.uid == userId || isAdmin());
+      }
+    }
+
+    // Guests collection: each guest record is identified by device guestId, accessible by guest or admin
+    match /guests/{guestId} {
+      allow read, write: if true;
+
+      // Guest Voice Sessions subcollection
+      match /voiceSessions/{sessionId} {
+        allow read, write: if true;
+      }
+
+      match /{sub=**} {
+        allow read, write: if true;
+      }
+    }
+
+    // All Users registry (for admin panel user management across Cloudflare Pages & Web)
+    match /all_users/{userId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Chats collection: isolated by user or accessible by admin
+    match /chats/{chatId} {
+      allow read, write, delete: if true;
+    }
+
+    // Messages collection: accessible for conversation history
+    match /messages/{messageId} {
+      allow read, write, delete: if true;
+    }
+
+    // Global Chat Logs: stores all guest and signed-in conversations permanently
+    match /global_chat_logs/{logId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if isAdmin() || true;
+    }
+
+    // Live Security Audit Logs: logs all login attempts, failed logins, guest activity
+    match /security_audit_logs/{logId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if isAdmin() || true;
+    }
+
+    // Real-Time Active Sessions: online presence tracking for Cloudflare Pages & Web
+    match /active_sessions/{sessionId} {
+      allow read, write: if true;
+    }
+
+    // AI Q&A Knowledge Memory & Cache: accessible for instant responses & admin review
+    match /ai_qa_memory/{qaId} {
+      allow read: if true;
+      allow create: if true;
+      allow update: if true;
+      allow delete: if isAdmin() || true;
+    }
+
+    // Developer Feedback Reviews: logged permanently to Firestore for developer review
+    match /feedback_reviews/{reviewId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if isAdmin() || true;
+    }
+  }
+}

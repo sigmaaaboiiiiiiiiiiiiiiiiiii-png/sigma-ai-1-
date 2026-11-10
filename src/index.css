@@ -1,0 +1,386 @@
+@import "tailwindcss";
+
+@keyframes circlePulseZoom {
+  0%, 100% {
+    transform: scale(0.65);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.85));
+  }
+}
+
+.animate-circle-zoom-fade {
+  animation: circlePulseZoom 1.2s ease-in-out infinite;
+}
+
+@keyframes pagePopFromCenter {
+  0% {
+    opacity: 0;
+    transform: scale(0.65) translateY(30px);
+  }
+  65% {
+    opacity: 0.96;
+    transform: scale(1.015) translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-page-pop {
+  animation: pagePopFromCenter 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: center center;
+}
+
+/* Stop all animations immediately for low-end devices */
+.stop-animations *,
+.stop-animations *::before,
+.stop-animations *::after {
+  animation: none !important;
+  transition-duration: 0.001s !important;
+}
+
+/* High Contrast Mode: Bolds all text for PC users */
+.high-contrast-mode,
+.high-contrast-mode * {
+  font-weight: 700 !important;
+}
+
+/* Smooth Interactive Button Animations when animations are enabled */
+body:not(.stop-animations) button {
+  transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1), background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+body:not(.stop-animations) button:active {
+  transform: scale(0.97);
+}
+
+/* Staggered entrance animation for Sidebar Library & Images sections */
+@keyframes sidebarStaggerIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-sidebar-stagger-item {
+  opacity: 0;
+  animation: sidebarStaggerIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+   animation-delay: var(--stagger-delay, 0ms);
+}
+
+/* Respect OS prefers-reduced-motion and app stop-animations */
+@media (prefers-reduced-motion: reduce) {
+  .animate-sidebar-stagger-item {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+.stop-animations .animate-sidebar-stagger-item {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Section 5: Smooth Staggered Three-Dot Action Expansion emerging from the Three-Dot button */
+@keyframes sigmaThreeDotEmerge {
+  0% {
+    opacity: 0;
+    transform: translateX(22px) scale(0.22);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(-2px) scale(1.06);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.animate-three-dot-emerge {
+  opacity: 0;
+  transform-origin: right center;
+  animation: sigmaThreeDotEmerge 0.26s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.stop-animations .animate-three-dot-emerge {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* =====================================================================
+   AUTHENTIC POWERPOINT SLIDE TRANSITIONS (Full Stage Animations)
+   ===================================================================== */
+@keyframes pptSlidePush {
+  0% {
+    transform: translateX(100%);
+    box-shadow: -30px 0 60px rgba(0, 0, 0, 0.9);
+  }
+  100% {
+    transform: translateX(0);
+    box-shadow: none;
+  }
+}
+
+@keyframes pptSlideGallery {
+  0% {
+    transform: perspective(1400px) rotateY(-50deg) scale(0.72) translateX(180px);
+    opacity: 0.15;
+    box-shadow: -20px 0 50px rgba(0, 0, 0, 0.85);
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: perspective(1400px) rotateY(0deg) scale(1) translateX(0);
+    opacity: 1;
+    box-shadow: none;
+  }
+}
+
+@keyframes pptSlideMorph {
+  0% {
+    transform: scale(0.82);
+    filter: blur(14px);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes pptSlideZoom {
+  0% {
+    transform: scale(0.18);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.03);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pptSlideFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pptSlideWipe {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes pptSlideSplit {
+  0% {
+    clip-path: inset(0 50% 0 50%);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes pptSlideShape {
+  0% {
+    clip-path: circle(0% at 50% 50%);
+  }
+  100% {
+    clip-path: circle(100% at 50% 50%);
+  }
+}
+
+@keyframes pptSlideCurtains {
+  0% {
+    transform: scaleX(0.02);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pptSlideCover {
+  0% {
+    transform: translateX(100%);
+    box-shadow: -35px 0 65px rgba(0, 0, 0, 0.95);
+  }
+  100% {
+    transform: translateX(0);
+    box-shadow: none;
+  }
+}
+
+@keyframes pptSlideUncover {
+  0% {
+    transform: scale(0.86) translateY(30px);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pptSlideDrape {
+  0% {
+    transform: translateY(-100%);
+    box-shadow: 0 35px 65px rgba(0, 0, 0, 0.95);
+  }
+  100% {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+}
+
+@keyframes pptSlideFlash {
+  0% {
+    filter: brightness(4.5);
+    opacity: 0.2;
+  }
+  30% {
+    filter: brightness(2.8);
+    opacity: 0.85;
+  }
+  100% {
+    filter: brightness(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pptSlideDissolve {
+  0% {
+    filter: blur(20px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes pptSlideRandomBars {
+  0% {
+    clip-path: polygon(0 0, 0 100%, 20% 100%, 20% 0, 40% 0, 40% 100%, 60% 100%, 60% 0, 80% 0, 80% 100%, 100% 100%, 100% 0);
+    opacity: 0.25;
+    transform: scale(0.96);
+  }
+  100% {
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, 100% 0, 100% 100%, 100% 100%, 100% 0, 100% 0, 100% 100%, 100% 100%, 100% 0);
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.ppt-trans-push {
+  animation: pptSlidePush 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.ppt-trans-gallery {
+  animation: pptSlideGallery 0.58s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  transform-style: preserve-3d;
+}
+
+.ppt-trans-morph {
+  animation: pptSlideMorph 0.52s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.ppt-trans-zoom {
+  animation: pptSlideZoom 0.48s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.ppt-trans-fade {
+  animation: pptSlideFade 0.42s ease-out forwards;
+}
+
+.ppt-trans-wipe {
+  animation: pptSlideWipe 0.48s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.ppt-trans-split {
+  animation: pptSlideSplit 0.48s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.ppt-trans-shape {
+  animation: pptSlideShape 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.ppt-trans-curtains {
+  animation: pptSlideCurtains 0.52s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform-origin: center center;
+}
+
+.ppt-trans-cover {
+  animation: pptSlideCover 0.48s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.ppt-trans-uncover {
+  animation: pptSlideUncover 0.46s ease-out forwards;
+}
+
+.ppt-trans-drape {
+  animation: pptSlideDrape 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.ppt-trans-flash {
+  animation: pptSlideFlash 0.42s ease-out forwards;
+}
+
+.ppt-trans-dissolve {
+  animation: pptSlideDissolve 0.46s ease-out forwards;
+}
+
+.ppt-trans-random-bars {
+  animation: pptSlideRandomBars 0.46s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.stop-animations .ppt-trans-push,
+.stop-animations .ppt-trans-gallery,
+.stop-animations .ppt-trans-morph,
+.stop-animations .ppt-trans-zoom,
+.stop-animations .ppt-trans-fade,
+.stop-animations .ppt-trans-wipe,
+.stop-animations .ppt-trans-split,
+.stop-animations .ppt-trans-shape,
+.stop-animations .ppt-trans-curtains,
+.stop-animations .ppt-trans-cover,
+.stop-animations .ppt-trans-uncover,
+.stop-animations .ppt-trans-drape,
+.stop-animations .ppt-trans-flash,
+.stop-animations .ppt-trans-dissolve,
+.stop-animations .ppt-trans-random-bars {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+  filter: none !important;
+}
+
+

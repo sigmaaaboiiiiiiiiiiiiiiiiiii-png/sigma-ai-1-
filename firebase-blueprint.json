@@ -1,0 +1,218 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User account profile and authentication metadata",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "lastLoginAt": { "type": "string" }
+      },
+      "required": ["uid", "email"]
+    },
+    "Chat": {
+      "title": "Chat Conversation",
+      "description": "Saved chat conversation session with intelligent topic title",
+      "type": "object",
+      "properties": {
+        "chatId": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" },
+        "lastMessagePreview": { "type": "string" }
+      },
+      "required": ["userId", "title", "createdAt", "updatedAt"]
+    },
+    "ChatMessage": {
+      "title": "Chat Message",
+      "description": "Individual message belonging to a chat conversation",
+      "type": "object",
+      "properties": {
+        "messageId": { "type": "string" },
+        "chatId": { "type": "string" },
+        "userId": { "type": "string" },
+        "role": { "type": "string" },
+        "content": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["chatId", "userId", "role", "content"]
+    },
+    "QaMemory": {
+      "title": "AI Q&A Knowledge Memory",
+      "description": "Global prompt and response memory cache accessible by AI and admin panel",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "prompt": { "type": "string" },
+        "normalizedPrompt": { "type": "string" },
+        "answer": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "userType": { "type": "string" },
+        "model": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "hitCount": { "type": "number" }
+      },
+      "required": ["id", "prompt", "normalizedPrompt", "answer"]
+    },
+    "GlobalChatLog": {
+      "title": "Global Chat Log",
+      "description": "Backup of user or guest conversation log for admin monitoring and AI context",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "userName": { "type": "string" },
+        "userType": { "type": "string" },
+        "prompt": { "type": "string" },
+        "answer": { "type": "string" },
+        "model": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "prompt", "answer", "createdAt"]
+    },
+    "SecurityAuditLog": {
+      "title": "Security Audit Log",
+      "description": "Real-time security events, sign-in attempts, and user activity records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "event": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "status": { "type": "string" },
+        "details": { "type": "string" }
+      },
+      "required": ["id", "timestamp", "event", "status"]
+    },
+    "FeedbackReview": {
+      "title": "Feedback Review",
+      "description": "User thumbs up/down feedback ratings, commentary, and developer reviews logged to Firestore",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "feedbackType": { "type": "string" },
+        "userRating": { "type": "string" },
+        "commentText": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "sessionHash": { "type": "string" },
+        "messageId": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "userType": { "type": "string" },
+        "promptSnippet": { "type": "string" },
+        "responseSnippet": { "type": "string" }
+      },
+      "required": ["id", "feedbackType", "userRating", "timestamp", "sessionHash"]
+    },
+    "Guest": {
+      "title": "Guest Profile",
+      "description": "Guest user record recognized by local device identifier",
+      "type": "object",
+      "properties": {
+        "guestId": { "type": "string" },
+        "name": { "type": "string" },
+        "displayName": { "type": "string" },
+        "deviceId": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "lastActiveAt": { "type": "string" },
+        "isGuest": { "type": "boolean" },
+        "voiceSessionActive": { "type": "boolean" },
+        "lastVoiceSessionAt": { "type": "string" }
+      },
+      "required": ["guestId", "name", "createdAt"]
+    },
+    "ActiveSession": {
+      "title": "Active Presence Session",
+      "description": "Real-time active session presence record for authenticated or guest users with voice state",
+      "type": "object",
+      "properties": {
+        "sessionId": { "type": "string" },
+        "identityType": { "type": "string" },
+        "identityId": { "type": "string" },
+        "displayName": { "type": "string" },
+        "startedAt": { "type": "string" },
+        "lastHeartbeat": { "type": "string" },
+        "status": { "type": "string" },
+        "voiceSession": { "type": "boolean" },
+        "microphonePermission": { "type": "string" },
+        "audioStream": { "type": "string" }
+      },
+      "required": ["sessionId", "identityType", "identityId", "displayName", "startedAt", "lastHeartbeat", "status", "voiceSession"]
+    },
+    "VoiceSession": {
+      "title": "Voice Session",
+      "description": "Explicit opt-in voice session metadata and optional transcript",
+      "type": "object",
+      "properties": {
+        "sessionId": { "type": "string" },
+        "userId": { "type": "string" },
+        "guestId": { "type": "string" },
+        "userType": { "type": "string" },
+        "displayName": { "type": "string" },
+        "startedAt": { "type": "string" },
+        "endedAt": { "type": "string" },
+        "duration": { "type": "number" },
+        "voiceEnabled": { "type": "boolean" },
+        "transcript": { "type": "string" },
+        "language": { "type": "string" },
+        "status": { "type": "string" },
+        "qualityMonitoringEnabled": { "type": "boolean" }
+      },
+      "required": ["sessionId", "userType", "displayName", "startedAt", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile document"
+    },
+    "/users/{userId}/voiceSessions/{sessionId}": {
+      "schema": "VoiceSession",
+      "description": "Authenticated user voice session metadata and transcripts"
+    },
+    "/guests/{guestId}": {
+      "schema": "Guest",
+      "description": "Guest user document"
+    },
+    "/guests/{guestId}/voiceSessions/{sessionId}": {
+      "schema": "VoiceSession",
+      "description": "Guest voice session metadata and transcripts"
+    },
+    "/all_users/{userId}": {
+      "schema": "User",
+      "description": "Global user registry document"
+    },
+    "/chats/{chatId}": {
+      "schema": "Chat",
+      "description": "User chat conversation document"
+    },
+    "/messages/{messageId}": {
+      "schema": "ChatMessage",
+      "description": "Chat message document linked by chatId and userId"
+    },
+    "/ai_qa_memory/{qaId}": {
+      "schema": "QaMemory",
+      "description": "Persistent AI knowledge cache document"
+    },
+    "/global_chat_logs/{logId}": {
+      "schema": "GlobalChatLog",
+      "description": "Global user and guest chat log"
+    },
+    "/security_audit_logs/{logId}": {
+      "schema": "SecurityAuditLog",
+      "description": "Live security audit log record"
+    },
+    "/active_sessions/{sessionId}": {
+      "schema": "ActiveSession",
+      "description": "Real-time active presence session with voice state"
+    },
+    "/feedback_reviews/{reviewId}": {
+      "schema": "FeedbackReview",
+      "description": "Developer feedback logs and reviews submitted by users"
+    }
+  }
+}

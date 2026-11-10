@@ -1,0 +1,16 @@
+[
+  {
+    "id": "play-1794326133122-feru",
+    "timestamp": "2026-11-10T15:55:33.122Z",
+    "providerId": "openrouter",
+    "modelId": "openrouter/free",
+    "prompt": "What is 2+2? Answer in one word.",
+    "response": "Four",
+    "status": "success",
+    "latencyMs": 3859,
+    "promptTokens": 22,
+    "completionTokens": 116,
+    "totalTokens": 138,
+    "httpStatus": 200
+  }
+]

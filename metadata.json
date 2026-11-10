@@ -1,0 +1,6 @@
+{
+  "name": "Sigma AI",
+  "description": "Sigma - your advanced AI assistant by Sigma.co. Ask me anything, explore 100+ Pro Modes, write code, or try the Live Assistant for a voice conversation.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

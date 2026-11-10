@@ -1,0 +1,21 @@
+[
+  {
+    "id": "bak-1794326002375-0llm",
+    "filename": "sigma_backup_2026-11-10T15-53-22-369Z.json",
+    "timestamp": "2026-11-10T15:53:22.369Z",
+    "sizeBytes": 493169,
+    "collectionsIncluded": [
+      "users",
+      "metrics",
+      "providers",
+      "models",
+      "connections",
+      "logs",
+      "qa_cache",
+      "token_usage"
+    ],
+    "recordsCount": 784,
+    "status": "completed",
+    "notes": "Automated ecosystem snapshot"
+  }
+]

@@ -1,0 +1,91 @@
+[
+  {
+    "id": "log-1794326002375-glk",
+    "timestamp": "2026-11-10T15:53:22.375Z",
+    "type": "STATUS_CHANGE",
+    "email": "devuserhub@gmail.com",
+    "details": "Created system backup: sigma_backup_2026-11-10T15-53-22-369Z.json (481.6 KB, 784 records)",
+    "status": "Success"
+  },
+  {
+    "id": "log-1789036512907-fyf",
+    "timestamp": "2026-09-10T10:35:12.907Z",
+    "type": "LOGIN_SUCCESS",
+    "email": "sabaharis.239@gmail.com",
+    "details": "User successfully authenticated via 4-digit email OTP",
+    "status": "Success"
+  },
+  {
+    "id": "log-1789036508325-ukb",
+    "timestamp": "2026-09-10T10:35:08.325Z",
+    "type": "OTP_REQUEST",
+    "email": "sabaharis.239@gmail.com",
+    "details": "4-digit OTP dispatched to user (mirrored to owner: true)",
+    "provider": "Resend",
+    "status": "MirroredToOwner"
+  },
+  {
+    "id": "log-1789035231057-xon",
+    "timestamp": "2026-09-10T10:13:51.057Z",
+    "type": "ROLE_CHANGE",
+    "email": "devuserhub@gmail.com",
+    "details": "Role updated to admin by devuserhub@gmail.com",
+    "status": "Success"
+  },
+  {
+    "id": "log-1789035224595-qc9",
+    "timestamp": "2026-09-10T10:13:44.595Z",
+    "type": "ROLE_CHANGE",
+    "email": "devuserhub@gmail.com",
+    "details": "Role updated to moderator by devuserhub@gmail.com",
+    "status": "Success"
+  },
+  {
+    "id": "log-1789035166476-ng6",
+    "timestamp": "2026-09-10T10:12:46.476Z",
+    "type": "LOGIN_SUCCESS",
+    "email": "devuserhub@gmail.com",
+    "details": "User session logged via google",
+    "status": "Success"
+  },
+  {
+    "id": "log-1789035161765-gd3",
+    "timestamp": "2026-09-10T10:12:41.765Z",
+    "type": "LOGIN_SUCCESS",
+    "email": "devuserhub@gmail.com",
+    "details": "User session logged via google",
+    "status": "Success"
+  },
+  {
+    "id": "log-1789035146746-2ix",
+    "timestamp": "2026-09-10T10:12:26.746Z",
+    "type": "LOGIN_SUCCESS",
+    "email": "sabaharis.239@gmail.com",
+    "details": "User session logged via google",
+    "status": "Success"
+  },
+  {
+    "id": "log-1789035143175-u5f",
+    "timestamp": "2026-09-10T10:12:23.175Z",
+    "type": "LOGIN_SUCCESS",
+    "email": "sabaharis.239@gmail.com",
+    "details": "User session logged via google",
+    "status": "Success"
+  },
+  {
+    "id": "log-1789035114672-gv4",
+    "timestamp": "2026-09-10T10:11:54.672Z",
+    "type": "LOGIN_SUCCESS",
+    "email": "sigmaaaboiiiiiiiiiiiiiiiiiii@gmail.com",
+    "details": "User session logged via google",
+    "status": "Success"
+  },
+  {
+    "id": "log-1789034999437-u77",
+    "timestamp": "2026-09-10T10:09:59.437Z",
+    "type": "LOGIN_SUCCESS",
+    "email": "sigmaaaboiiiiiiiiiiiiiiiiiii@gmail.com",
+    "details": "User session logged via google",
+    "status": "Success"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "u-1789035143174-7783",
+    "name": "Saba Ahmed",
+    "email": "sabaharis.239@gmail.com",
+    "role": "user",
+    "status": "active",
+    "authProvider": "google",
+    "joinedAt": "2026-09-10",
+    "lastActive": "Just now",
+    "totalChats": 0,
+    "totalActions": 3
+  },
+  {
+    "id": "u-owner",
+    "name": "Sigma Owner",
+    "email": "sigmaaaboiiiiiiiiiiiiiiiiiii@gmail.com",
+    "role": "owner",
+    "status": "active",
+    "authProvider": "email_otp",
+    "joinedAt": "2025-01-01",
+    "lastActive": "Just now",
+    "totalChats": 0,
+    "totalActions": 2
+  },
+  {
+    "id": "u-admin",
+    "name": "Admin Hub",
+    "email": "devuserhub@gmail.com",
+    "role": "admin",
+    "status": "active",
+    "authProvider": "google",
+    "joinedAt": "2025-01-05",
+    "lastActive": "Just now",
+    "totalChats": 2,
+    "totalActions": 4
+  }
+]

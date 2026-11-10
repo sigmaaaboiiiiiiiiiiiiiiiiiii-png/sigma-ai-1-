@@ -1,0 +1,16 @@
+[
+  {
+    "id": "tok-1794326133122-csiq",
+    "timestamp": "2026-11-10T15:55:33.122Z",
+    "userEmail": "admin@sigma.co",
+    "clientId": "admin-playground",
+    "providerId": "openrouter",
+    "modelId": "openrouter/free",
+    "promptTokens": 22,
+    "completionTokens": 116,
+    "totalTokens": 138,
+    "estimatedCostUsd": 0,
+    "latencyMs": 3859,
+    "status": "success"
+  }
+]
